@@ -46,6 +46,29 @@
   width: calc(100% - 222px);
   left: 222px;
 }
+
+.mg-sidemenu-search-area {
+  height: 52px;
+  width: 100%;
+  position: absolute;
+  background-color: #125fff;
+}
+.mg-sidemenu-content-area {
+  top: 52px;
+  width: 100%;
+  height: calc(100% - 80px);
+  position: absolute;
+  background-color: #fffddf;
+}
+.mg-sidemenu-footer-area {
+  position: absolute;
+  bottom: 1px;
+  height: 26px;
+  width: 100%;
+  background-color: #fff00f;
+  display: flex;
+}
+
 .App-link {
   color: #61dafb;
 }

@@ -9,7 +9,7 @@ export default (state = initialState, action) => {
     case Constants.actions.FETCH_ALL_DATA:
       return {
         allProperties: { start: "Data" },
-        ComponentData: { start: "COmponenet" }
+        componentData: { start: "COmponenet" }
       };
     default:
       return state;

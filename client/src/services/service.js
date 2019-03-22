@@ -6,9 +6,10 @@ export const service = {
 
 const URL = "http://localhost:36987";
 
-function getAllComponentData() {
+async function getAllComponentData() {
   this.getApi("/api/getComponentData").then(data => {
     console.log(JSON.stringify(data));
+    return Promise.resolve();
   });
 }
 
