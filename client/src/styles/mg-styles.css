@@ -1,0 +1,203 @@
+.mg-row {
+  background-color: #ffffff;
+  display: flex;
+  width: 100%;
+  height: 50px;
+  align-items: center;
+  flex-direction: row;
+  flex-wrap: wrap;
+  overflow: auto;
+  justify-content: center;
+  text-overflow: ellipsis;
+}
+.mg-col {
+  margin: 5px;
+  background-color: #ffffff;
+  width: 200px;
+  height: 82%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.mg-label {
+  text-overflow: ellipsis;
+  overflow: hidden;
+  white-space: nowrap;
+  display: block;
+}
+
+input[type="text"],
+select,
+textarea,
+datalist {
+  width: 320px;
+  height: 32px;
+  box-sizing: border-box;
+  padding: 2px 6px;
+  border: none; /* <-- This thing here */
+  border: solid 1px #ccc;
+  border-radius: 8px;
+  resize: vertical;
+  outline: none;
+  margin: 8px;
+}
+
+input[type="text"]:hover,
+select:hover,
+textarea:hover,
+datalist:hover {
+  box-shadow: 2px 2px 6px #cabfd4;
+}
+
+input[type="text"]:focus,
+select:focus,
+textarea:focus,
+datalist:focus {
+  box-shadow: 2px 2px 6px #cabfd4;
+}
+
+.mg-button {
+  border: 0;
+  background-color: #7a0c7a;
+  padding: 8px 16px;
+  margin: 4px 6px;
+  min-width: 96px;
+  color: #fff;
+  font-size: 16px;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+
+.mg-button:hover,
+.mg-float-button:hover {
+  box-shadow: 2px 2px 8px #86848b;
+}
+
+.mg-float-button {
+  border: 0;
+  background-color: #7a0c7a;
+  padding: 12px;
+  margin: 6px;
+  width: 52px;
+  height: 52px;
+  color: #fff;
+  font-size: 14px;
+  text-transform: uppercase;
+  z-index: 1000;
+  border-radius: 50%;
+  outline: none;
+  cursor: pointer;
+}
+
+.mg-float-area {
+  display: flex;
+  flex-direction: column;
+  position: fixed;
+  right: 5px;
+  z-index: 1000;
+  overflow: hidden;
+  /* border-radius: 50%; */
+  bottom: 5px;
+}
+
+/* //////////////////////////// */
+.mg-modal {
+  /* display: block; Hidden by default */
+  position: fixed; /* Stay in place */
+  z-index: 10001; /* Sit on top */
+  padding-top: 30px; /* Location of the box */
+  left: 0;
+  top: 0;
+  width: 100%; /* Full width */
+  height: 100%; /* Full height */
+  overflow: auto; /* Enable scroll if needed */
+  background-color: rgb(0, 0, 0); /* Fallback color */
+  background-color: rgba(0, 0, 0, 0.2); /* Black w/ opacity */
+}
+
+.mg-modal-content {
+  position: relative;
+  border-radius: 10px;
+  background-color: #fff;
+  margin: auto;
+  padding: 0;
+  border: 1px solid #888;
+  width: 80%;
+
+  box-shadow: 0 4px 8px 0 rgba(0, 0, 0, 0.2), 0 6px 20px 0 rgba(0, 0, 0, 0.19);
+  -webkit-animation-name: animatetop;
+  -webkit-animation-duration: 0.4s;
+  animation-name: animatetop;
+  animation-duration: 0.4s;
+}
+
+@-webkit-keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes animatetop {
+  from {
+    top: -300px;
+    opacity: 0;
+  }
+  to {
+    top: 0;
+    opacity: 1;
+  }
+}
+
+.mg-close {
+  color: white;
+  float: right;
+  font-size: 28px;
+  font-weight: bold;
+}
+
+.mg-close:hover,
+.mg-close:focus {
+  color: #000;
+  text-decoration: none;
+  cursor: pointer;
+}
+
+.mg-modal-header {
+  padding: 2px 16px;
+  background-color: #7a0c7a;
+  border-radius: 10px 10px 0 0;
+  color: white;
+}
+
+.mg-modal-body {
+  padding: 2px 16px;
+  height: 320px;
+  overflow: auto;
+  background-color: #fff;
+}
+
+.mg-modal-footer {
+  background-color: #7a0c7a;
+  border-radius: 0 0 10px 10px;
+  color: white;
+  position: relative;
+  width: 100%;
+  min-height: 32px;
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-end;
+  align-items: center;
+}
+
+.mg-row-right {
+  padding: 8px 16px;
+  float: right;
+  position: relative;
+}
