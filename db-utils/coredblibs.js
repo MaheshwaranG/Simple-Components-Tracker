@@ -2,6 +2,8 @@ const fs = require("fs");
 const path = require("path");
 
 const db = {
+  isDbExist,
+  isTableExist,
   createDB,
   createTable,
   findAll,
@@ -18,6 +20,23 @@ const db = {
 // 2 operation success and no changes in exist db
 
 const dbBase = path.join(__dirname + "/../database/");
+
+function isDbExist(name) {
+  let dbName = path.join(dbBase + name);
+  if (fs.existsSync(dbName)) {
+    return true;
+  }
+  return false;
+}
+
+function isTableExist(database, name) {
+  let tableName = dbBase + database + "/" + name + ".json";
+  if (fs.existsSync(tableName)) {
+    return true;
+  }
+  return false;
+}
+
 async function createDB(name, options) {
   let dbName = path.join(dbBase + name);
   console.log("asd " + dbName);
@@ -35,6 +54,7 @@ async function createDB(name, options) {
 
 async function createTable(database, name, schema) {
   let tableName = dbBase + database + "/" + name + ".json";
+  console.log("Util schema : " + JSON.stringify(schema));
   let data = await createDB(database);
   if (data.status === 0) {
     console.log("Sample Test ");
@@ -203,4 +223,6 @@ async function start() {
   );
 }
 
-start();
+// export default db;
+module.exports = db;
+// start();

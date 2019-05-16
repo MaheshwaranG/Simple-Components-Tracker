@@ -56,16 +56,16 @@
 .mg-sidemenu-content-area {
   top: 52px;
   width: 100%;
-  height: calc(100% - 80px);
+  height: calc(100% - 52px);
   position: absolute;
   background-color: #fffddf;
 }
 .mg-sidemenu-footer-area {
   position: absolute;
   bottom: 1px;
-  height: 26px;
+  height: 42px;
   width: 100%;
-  background-color: #fff00f;
+
   display: flex;
 }
 

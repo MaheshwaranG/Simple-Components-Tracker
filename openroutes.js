@@ -1,19 +1,21 @@
-let fs = require("fs");
-module.exports = (app, middleware) => {
-  app.get("/api/getComponentData", middleware, (req, res) => {
-    if (!fs.existsSync(__dirname + "/database/components")) {
-      fs.mkdirSync(__dirname + "/database/components");
-      console.log("Database irukku");
-    }
-    if (
-      !fs.existsSync(__dirname + "/database/components/ComponentsData.json")
-    ) {
-      fs.writeFileSync(
-        __dirname + "/database/components/ComponentsData.json",
-        "{}"
-      );
-    }
+const db = require("./db-utils/coredblibs");
+const constants = require("./constants");
 
-    return res.json({ status: "success" });
+module.exports = (app, middleware) => {
+  app.get("/api/getComponentData", middleware, async (req, res) => {
+    if (db.isTableExist(constants.DB.CORTEXAPP, constants.Table.COMPONENTS)) {
+      let data = await db.findAll(
+        constants.DB.CORTEXAPP,
+        constants.Table.COMPONENTS
+      );
+      return res.json(data);
+    } else {
+      return res.json({ status: "success@#@@" });
+    }
+  });
+
+  app.post("/api/insertSingleAttribute", middleware, async (req, res) => {
+    console.log(req.body);
+    return res.json({ status: "insert Single Attribute" });
   });
 };

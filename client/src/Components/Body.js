@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { connect } from "react-redux";
 import SideMenu from "./SIdeMenus";
+import ContentArea from "./ContentArea";
 
 class Body extends Component {
   constructor(props) {
@@ -9,10 +10,9 @@ class Body extends Component {
   render() {
     return (
       <div>
-        <div className="mg-side-menu">
-          <SideMenu />
-        </div>
+        <SideMenu />
         <div className="mg-content-area">
+          <ContentArea type="Content"/>
         </div>
       </div>
     );
