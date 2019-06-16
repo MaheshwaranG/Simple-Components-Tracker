@@ -29,6 +29,13 @@ class SideMenu extends Component {
     this.setState({ isDialogOpen: true });
   }
 
+  openComponentDialog = () => {
+    console.log("sdfsf ");
+    service.getTest().then(data => {
+      console.log("dsdjdsjgdsgdsggfd ++++++++==" + data);
+    });
+  };
+
   render() {
     return (
       <div>
@@ -51,6 +58,7 @@ class SideMenu extends Component {
             name="mgComponentAddButton"
             value="C Add"
             className="mg-float-button"
+            onClick={this.openComponentDialog}
           >
             C
           </button>

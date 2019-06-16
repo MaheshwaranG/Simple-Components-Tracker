@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { connect } from "react-redux";
 import Constants from "../Constants";
 import "../styles/mg-styles.css";
+import { service } from "../services/service";
 
 class CreateAttributeDialog extends Component {
   constructor(props) {
@@ -10,11 +11,11 @@ class CreateAttributeDialog extends Component {
       isOpen: props.isOpen,
       isFromState: false,
       attributes: {
-        name: "",
-        desc: "",
-        issue: "",
-        inputType: "",
-        inputFormat: ""
+        name: "ss",
+        desc: "sds",
+        issue: "sds",
+        inputType: "sds",
+        inputFormat: "sds"
       },
       style: {
         row: {
@@ -42,10 +43,44 @@ class CreateAttributeDialog extends Component {
     this.windowClickListners = this.windowClickListners.bind(this);
     this.handleResize = this.handleResize.bind(this);
     this.saveAttribute = this.saveAttribute.bind(this);
+    this.onNameChange = this.onNameChange.bind(this);
+    this.onDescChange = this.onDescChange.bind(this);
+    this.onIssueChange = this.onIssueChange.bind(this);
+    this.onInputTypeChange = this.onInputTypeChange.bind(this);
+    this.onInputFormateChange = this.onInputFormateChange.bind(this);
+  }
+
+  onNameChange(event) {
+    this.setState({
+      attributes: { ...this.state.attributes, name: event.target.value }
+    });
+  }
+  onDescChange(event) {
+    this.setState({
+      attributes: { ...this.state.attributes, desc: event.target.value }
+    });
+  }
+  onIssueChange(event) {
+    this.setState({
+      attributes: { ...this.state.attributes, issue: event.target.value }
+    });
+  }
+  onInputTypeChange(event) {
+    this.setState({
+      attributes: { ...this.state.attributes, inputType: event.target.value }
+    });
+  }
+  onInputFormateChange(event) {
+    this.setState({
+      attributes: { ...this.state.attributes, inputFormat: event.target.value }
+    });
   }
 
   saveAttribute() {
-    console.log("Save Attribute");
+    console.log("Save Attribute " + JSON.stringify(this.state.attributes));
+    service.saveAttributes(this.state.attributes).then(data => {
+      console.log(JSON.stringify(data));
+    });
   }
 
   windowClickListners(event) {
@@ -107,8 +142,9 @@ class CreateAttributeDialog extends Component {
                   type="text"
                   id="mg-ad-attribute-name"
                   name="mgADAttributeName"
-                  placeholder="Checkbox"
+                  placeholder="placeholder"
                   value={this.state.attributes.name}
+                  onChange={event => this.onNameChange(event)}
                 />
               </div>
             </div>
@@ -126,7 +162,8 @@ class CreateAttributeDialog extends Component {
                   id="mg-ad-attribute-description"
                   name="mgADAttributeDescription"
                   placeholder="It used for"
-                  value="dfdsfds"
+                  value={this.state.attributes.desc}
+                  onChange={event => this.onDescChange(event)}
                 />
               </div>
             </div>
@@ -144,6 +181,8 @@ class CreateAttributeDialog extends Component {
                   id="mg-ad-attribute-issues"
                   name="mgADAttributeIssues"
                   placeholder="It has issue"
+                  value={this.state.attributes.issue}
+                  onChange={event => this.onIssueChange(event)}
                 />
               </div>
             </div>
@@ -159,6 +198,7 @@ class CreateAttributeDialog extends Component {
                   id="mg-ad-attribute-input-format"
                   name="mgADAttributeInputFormat"
                   placeholder="2019/02/32"
+                  onChange={event => this.onInputFormateChange(event)}
                 />
               </div>
             </div>
@@ -174,6 +214,7 @@ class CreateAttributeDialog extends Component {
                   list="mgADAttributeType"
                   name="mgADAttributeType"
                   id="mg-ad-attribute-input-type"
+                  onChange={event => this.onInputTypeChange(event)}
                 />
                 <datalist id="mgADAttributeType">
                   <option value="string">string</option>

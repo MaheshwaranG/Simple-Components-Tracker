@@ -1,5 +1,6 @@
 const fs = require("fs");
 const path = require("path");
+const uuidv4 = require("uuid/v4");
 
 const db = {
   isDbExist,
@@ -178,7 +179,9 @@ async function getSchema(database, table) {
 
 async function insert(database, table, data) {
   let tableName = dbBase + database + "/" + table + ".json";
-  let newData = await writeTableData(tableName, data);
+  data._id = uuidv4();
+  let saveData = { [data._id]: data };
+  let newData = await writeTableData(tableName, saveData);
   return Promise.resolve(newData);
 }
 

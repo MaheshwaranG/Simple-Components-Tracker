@@ -14,9 +14,10 @@ app.use(cookieParser());
 app.use(session({ secret: "secrectkey" }));
 
 var myLogger = function(req, res, next) {
-  res.header("Access-Control-Allow-Origin", "*");
-  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE");
-  res.header("Access-Control-Allow-Headers", "Content-Type");
+  res.header("Access-Control-Allow-Origin", "http://localhost:3000");
+  res.header("Access-Control-Allow-Methods", "GET,PUT,POST,DELETE,OPTIONS");
+  res.header("Access-Control-Allow-Credentials", "true");
+  res.header("Access-Control-Allow-Headers", "Origin, Content-Type, Accept");
   console.log("LLOGGED Req is : " + JSON.stringify(req.path));
   next();
 };
@@ -24,7 +25,10 @@ var myLogger = function(req, res, next) {
 app.use(myLogger);
 
 require("./openroutes")(app, myLogger);
-
+app.get("/check", (req, res) => {
+  console.log("Api works fine");
+  return res.json({ a: 10 });
+});
 app.get("/*", function(req, res) {
   //   res.send("Just Checking");
   console.log("Path is : " + __dirname);

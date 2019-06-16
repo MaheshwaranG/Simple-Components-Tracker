@@ -1,1 +1,27 @@
-{"data":{},"schema":{"uuid":{"name":"","havingComponents":[],"inputFormat":[],"inputType":"","isCortexSpecific":false,"issue":"","description":"","createdUser":"","createdDate":"","updatedUser":"","updatedDate":""}}}
+{
+  "data": {
+    "a2421514-52d0-4e20-9a47-78b9873a809d": {
+      "name": "ss",
+      "desc": "sds",
+      "issue": "sds",
+      "inputType": "sds",
+      "inputFormat": "sds",
+      "_id": "a2421514-52d0-4e20-9a47-78b9873a809d"
+    }
+  },
+  "schema": {
+    "uuid": {
+      "name": "",
+      "havingComponents": [],
+      "inputFormat": [],
+      "inputType": "",
+      "isCortexSpecific": false,
+      "issue": "",
+      "description": "",
+      "createdUser": "",
+      "createdDate": "",
+      "updatedUser": "",
+      "updatedDate": ""
+    }
+  }
+}

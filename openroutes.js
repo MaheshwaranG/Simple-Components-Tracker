@@ -14,8 +14,10 @@ module.exports = (app, middleware) => {
     }
   });
 
-  app.post("/api/insertSingleAttribute", middleware, async (req, res) => {
-    console.log(req.body);
+  app.post("/api/insertSingleAttribute", middleware, (req, res) => {
+    console.log("--=== " + JSON.stringify(req.body));
+    db.insert(constants.DB.CORTEXAPP,
+      constants.Table.ATTRIBUTES, req.body)
     return res.json({ status: "insert Single Attribute" });
   });
 };
