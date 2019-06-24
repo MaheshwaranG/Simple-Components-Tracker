@@ -49,7 +49,7 @@ function postApi(requestURL, data) {
     // credentials: "omit",
     headers: {
       Accept: "application/json",
-      // Origin: "http://localhost:3000",
+      // Origin: "http://localhost:3000", 
       "Content-Type": "application/json",
       "Access-Control-Request-Headers": "Content-Type, Authorization"
       // "Access-Control-Allow-Origin": "http://localhost:3000"
